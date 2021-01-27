@@ -1,0 +1,174 @@
+GNU assembler 1.00
+source: temp/input.asmc
+0004  0F                 in         
+0005  0F                 in         
+0006  0F                 in         
+0007  0C 0D              pop cx
+0009  0C 0C              pop bx
+0011  0C 0B              pop ax
+0013  0B 0D              push cx
+0015  0B 20 00 00 00 00  push 0
+0021  33    C7 00 00 00  je IfCZero:
+0026  0B 0C              push bx
+0028  0B 20 00 00 00 00  push 0
+0034  33    4A 01 00 00  je IfBZero:
+0039  0B 0B              push ax
+0041  0B 20 00 00 00 00  push 0
+0047  33    B0 01 00 00  je IfAZero:
+0052  0B 0C              push bx
+0054  0B 0C              push bx
+0056  17                 mul
+0057  0B 20 00 00 80 40  push 4
+0063  0B 0B              push ax
+0065  0B 0D              push cx
+0067  17                 mul
+0068  17                 mul
+0069  15                 sub
+0070  0C 0E              pop dx
+0072  0B 0E              push dx
+0074  0B 20 00 00 00 00  push 0
+0080  36    6B 00 00 00  jb NoRoots:
+0085  0B 0E              push dx
+0087  0B 20 00 00 00 00  push 0
+0093  33    73 00 00 00  je OneRoot:
+0098  0B 0E              push dx
+0100  0B 20 00 00 00 00  push 0
+0106  34    8F 00 00 00  ja TwoRoots:
+0111  0B 20 00 00 00 00  push 0
+0117  01                 out
+0118  00                 end
+0119  0B 20 00 00 80 3F  push 1
+0125  01                 out
+0126  0B 20 00 00 80 BF  push -1
+0132  0B 0C              push bx
+0134  17                 mul
+0135  0B 0B              push ax
+0137  0B 20 00 00 00 40  push 2
+0143  17                 mul
+0144  16                 div
+0145  01                 out
+0146  00                 end
+0147  0B 20 00 00 00 40  push 2
+0153  01                 out
+0154  0B 20 00 00 80 BF  push -1
+0160  0B 0C              push bx
+0162  17                 mul
+0163  0B 0E              push dx
+0165  18                 sqrt
+0166  14                 add
+0167  0B 20 00 00 00 40  push 2
+0173  0B 0B              push ax
+0175  17                 mul
+0176  16                 div
+0177  01                 out
+0178  0B 20 00 00 80 BF  push -1
+0184  0B 0C              push bx
+0186  17                 mul
+0187  0B 0E              push dx
+0189  18                 sqrt
+0190  15                 sub
+0191  0B 20 00 00 00 40  push 2
+0197  0B 0B              push ax
+0199  17                 mul
+0200  16                 div
+0201  01                 out
+0202  00                 end
+0203  0B 20 00 00 80 3F  push 1
+0209  0B 0B              push ax
+0211  0B 0C              push bx
+0213  39    FF 00 00 00  call SolveLiner:
+0218  0B 0E              push dx
+0220  14                 add
+0221  01                 out
+0222  0B 0E              push dx
+0224  0B 20 00 00 00 00  push 0
+0230  33    F7 00 00 00  je one:
+0235  0B 0E              push dx
+0237  0B 20 00 00 00 40  push 2
+0243  33    FE 00 00 00  je two:
+0248  0B 0B              push ax
+0250  01                 out
+0251  0B 20 00 00 00 00  push 0
+0257  01                 out
+0258  00                 end
+0259  0C 0E              pop  dx
+0261  0C 0C              pop  bx
+0263  0C 0B              pop  ax
+0265  0B 0E              push dx
+0267  0B 0B              push ax
+0269  0B 20 00 00 00 00  push 0
+0275  33    2B 01 00 00  je 0:
+0280  0B 20 00 00 80 BF  push -1
+0286  0B 0C              push bx
+0288  17                 mul
+0289  0B 0B              push ax
+0291  16                 div
+0292  0C 0B              pop ax
+0294  0B 20 00 00 80 3F  push 1
+0300  0C 0E              pop dx
+0302  3A                 ret
+0303  0B 0C              push bx
+0305  0B 20 00 00 00 00  push 0
+0311  33    41 01 00 00  je 1:
+0316  0B 20 00 00 00 00  push 0
+0322  0C 0E              pop dx
+0324  3A                 ret
+0325  0B 20 00 00 00 40  push 2
+0331  0C 0E              pop dx
+0333  3A                 ret
+0334  0B 0D              push cx
+0336  0B 0B              push ax
+0338  17                 mul
+0339  0B 20 00 00 00 00  push 0
+0345  34    8B 01 00 00  ja nor:
+0350  0B 0B              push ax
+0352  0B 20 00 00 00 00  push 0
+0358  33    93 01 00 00  je noa:
+0363  0B 20 00 00 00 40  push 2
+0369  01                 out
+0370  0B 0D              push cx
+0372  0B 20 00 00 80 BF  push -1
+0378  17                 mul
+0379  0B 0B              push ax
+0381  16                 div
+0382  18                 sqrt
+0383  0C 0B              pop ax
+0385  0B 0B              push ax
+0387  01                 out
+0388  0B 0B              push ax
+0390  0B 20 00 00 80 BF  push -1
+0396  17                 mul
+0397  01                 out
+0398  00                 end
+0399  0B 20 00 00 00 00  push 0
+0405  01                 out
+0406  00                 end
+0407  0B 0D              push cx
+0409  0B 20 00 00 00 00  push 0
+0415  33    A8 01 00 00  je 666:
+0420  0B 20 00 00 00 00  push 0
+0426  01                 out
+0427  00                 end
+0428  0B 20 00 00 40 40  push 3
+0434  01                 out 
+0435  00                 end
+0436  0B 0C              push bx
+0438  0B 0D              push cx
+0440  39    FF 00 00 00  call SolveLiner:
+0445  0B 0E              push dx
+0447  0B 20 00 00 00 00  push 0
+0453  33    DE 01 00 00  je one2:
+0458  0B 0E              push dx
+0460  0B 20 00 00 00 40  push 2
+0466  33    E6 01 00 00  je two2:
+0471  0B 20 00 00 80 3F  push 1
+0477  01                 out
+0478  0B 0B              push ax
+0480  01                 out
+0481  00                 end
+0482  0B 20 00 00 00 00  push 0
+0488  01                 out
+0489  00                 end
+0490  0B 20 00 00 40 40  push 3
+0496  01                 out
+0497  00                 end

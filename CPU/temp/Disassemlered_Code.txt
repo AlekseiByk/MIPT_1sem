@@ -1,0 +1,172 @@
+in 
+in 
+in 
+pop cx
+pop bx
+pop ax
+push cx
+push  0.000000
+je  199
+push bx
+push  0.000000
+je  330
+push ax
+push  0.000000
+je  432
+push bx
+push bx
+mul 
+push  4.000000
+push ax
+push cx
+mul 
+mul 
+sub 
+pop dx
+push dx
+push  0.000000
+jb  107
+push dx
+push  0.000000
+je  115
+push dx
+push  0.000000
+ja  143
+push  0.000000
+out 
+end 
+push  1.000000
+out 
+push  -1.000000
+push bx
+mul 
+push ax
+push  2.000000
+mul 
+div 
+out 
+end 
+push  2.000000
+out 
+push  -1.000000
+push bx
+mul 
+push dx
+sqrt 
+add 
+push  2.000000
+push ax
+mul 
+div 
+out 
+push  -1.000000
+push bx
+mul 
+push dx
+sqrt 
+sub 
+push  2.000000
+push ax
+mul 
+div 
+out 
+end 
+push  1.000000
+push ax
+push bx
+call  255
+push dx
+add 
+out 
+push dx
+push  0.000000
+je  247
+push dx
+push  2.000000
+je  254
+push ax
+out 
+push  0.000000
+out 
+end 
+pop dx
+pop bx
+pop ax
+push dx
+push ax
+push  0.000000
+je  299
+push  -1.000000
+push bx
+mul 
+push ax
+div 
+pop ax
+push  1.000000
+pop dx
+ret 
+push bx
+push  0.000000
+je  321
+push  0.000000
+pop dx
+ret 
+push  2.000000
+pop dx
+ret 
+push cx
+push ax
+mul 
+push  0.000000
+ja  395
+push ax
+push  0.000000
+je  403
+push  2.000000
+out 
+push cx
+push  -1.000000
+mul 
+push ax
+div 
+sqrt 
+pop ax
+push ax
+out 
+push ax
+push  -1.000000
+mul 
+out 
+end 
+push  0.000000
+out 
+end 
+push cx
+push  0.000000
+je  424
+push  0.000000
+out 
+end 
+push  3.000000
+out 
+end 
+push bx
+push cx
+call  255
+push dx
+push  0.000000
+je  478
+push dx
+push  2.000000
+je  486
+push  1.000000
+out 
+push ax
+out 
+end 
+push  0.000000
+out 
+end 
+push  3.000000
+out 
+end 

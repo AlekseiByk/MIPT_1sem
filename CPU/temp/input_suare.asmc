@@ -1,0 +1,203 @@
+in ;input A
+in ;input B
+in ;input C
+
+pop cx
+pop bx
+pop ax
+
+push cx
+push 0
+je IfCZero:
+
+push bx
+push 0
+je IfBZero:
+
+push ax
+push 0
+je IfAZero:
+
+push bx
+push bx
+mul
+push 4
+push ax
+push cx
+mul
+mul
+sub
+pop dx
+
+push dx
+push 0
+jb NoRoots:
+
+push dx
+push 0
+je OneRoot:
+
+push dx
+push 0
+ja TwoRoots:
+
+NoRoots:
+push 0
+out
+end
+
+OneRoot:
+push 1
+out
+push -1
+push bx
+mul
+push ax
+push 2
+mul
+div
+out
+end
+
+TwoRoots:
+push 2
+out
+push -1
+push bx
+mul
+push dx
+sqrt
+add
+push 2
+push ax
+mul
+div
+out
+push -1
+push bx
+mul
+push dx
+sqrt
+sub
+push 2
+push ax
+mul
+div
+out
+end
+
+IfCZero:
+push 1
+push ax
+push bx
+call SolveLiner:
+push dx
+add
+out
+push dx
+push 0
+je one:
+push dx
+push 2
+je two:
+push ax
+out
+one:
+push 0
+out
+two:
+end
+
+SolveLiner:
+pop  dx
+pop  bx
+pop  ax
+push dx
+push ax
+push 0
+je 0:
+push -1
+push bx
+mul
+push ax
+div
+pop ax
+push 1
+pop dx
+ret
+0:
+push bx
+push 0
+je 1:
+push 0
+pop dx
+ret
+1:
+push 2
+pop dx
+ret
+
+IfBZero:
+push cx
+push ax
+mul
+push 0
+ja nor:
+push ax
+push 0
+je noa:
+push 2
+out
+push cx
+push -1
+mul
+push ax
+div
+sqrt
+pop ax
+push ax
+out
+push ax
+push -1
+mul
+out
+end
+nor:
+push 0
+out
+end
+noa:
+push cx
+push 0
+je 666:
+push 0
+out
+end
+666:
+push 3
+out 
+end
+
+IfAZero:
+push bx
+push cx
+call SolveLiner:
+push dx
+push 0
+je one2:
+push dx
+push 2
+je two2:
+push 1
+out
+push ax
+out
+end
+one2:
+push 0
+out
+end
+two2:
+push 3
+out
+end

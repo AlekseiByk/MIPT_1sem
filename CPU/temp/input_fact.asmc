@@ -1,0 +1,25 @@
+in
+call factorial:
+push ax
+out
+end
+
+factorial:
+pop bx
+pop ax
+push bx
+push ax
+push ax
+push 1
+sub
+pop ax
+push ax
+push 1
+je factorialend:
+push ax
+call factorial:
+factorialend:
+push ax
+mul
+pop ax
+ret
