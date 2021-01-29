@@ -1,0 +1,63 @@
+GNU assembler 1.00
+source: temp/input.asmc
+0004  32    05 00 00 00  jmp main:
+0009  0B 0E              push dx
+0011  0B 20 00 00 40 40  push 3
+0017  14                 add
+0018  0C 0E              pop dx
+0020  0F                 in
+0021  0C 6E 00 00 80 3F  pop[ dx + 1 ]
+0027  0B 6E 00 00 80 3F  push [ dx + 1 ]
+0033  0C 6E 00 00 00 40  pop [ dx + 2 ]
+0039  0B 0E              push dx
+0041  0B 20 00 00 80 3F  push 1
+0047  14                 add
+0048  0C 0E              pop dx
+0050  39    4A 00 00 00  call func26:
+0055  0B 60 00 00 00 00  push [ 0 ]
+0061  0B 0E              push dx
+0063  0B 20 00 00 80 3F  push 1
+0069  15                 sub
+0070  0C 0E              pop dx
+0072  01                 out
+0073  32    E2 00 00 00  jmp endlabel:
+0078  0B 6E 00 00 80 3F  push [ dx + 1 ]
+0084  0B 20 00 00 00 40  push 2
+0090  37    D0 00 00 00  jbe label0:
+0095  0B 6E 00 00 80 3F  push [ dx + 1 ]
+0101  0B 20 00 00 80 3F  push 1
+0107  15                 sub
+0108  0C 6E 00 00 00 40  pop [ dx + 2 ]
+0114  0B 0E              push dx
+0116  0B 20 00 00 80 3F  push 1
+0122  14                 add
+0123  0C 0E              pop dx
+0125  39    4A 00 00 00  call func26:
+0130  0B 60 00 00 00 00  push [ 0 ]
+0136  0B 0E              push dx
+0138  0B 20 00 00 80 3F  push 1
+0144  15                 sub
+0145  0C 0E              pop dx
+0147  0B 6E 00 00 80 3F  push [ dx + 1 ]
+0153  0B 20 00 00 00 40  push 2
+0159  15                 sub
+0160  0C 6E 00 00 00 40  pop [ dx + 2 ]
+0166  0B 0E              push dx
+0168  0B 20 00 00 80 3F  push 1
+0174  14                 add
+0175  0C 0E              pop dx
+0177  39    4A 00 00 00  call func26:
+0182  0B 60 00 00 00 00  push [ 0 ]
+0188  0B 0E              push dx
+0190  0B 20 00 00 80 3F  push 1
+0196  15                 sub
+0197  0C 0E              pop dx
+0199  14                 add
+0200  0C 60 00 00 00 00  pop [ 0 ]
+0206  3A                 ret
+0207  32    DD 00 00 00  jmp label1:
+0212  0B 20 00 00 80 3F  push 1
+0218  0C 60 00 00 00 00  pop [ 0 ]
+0224  3A                 ret
+0225  32    E2 00 00 00  jmp endlabel:
+0230  00                 end

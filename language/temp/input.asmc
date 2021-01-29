@@ -1,0 +1,68 @@
+jmp main:
+main:
+push dx
+push 3
+add
+pop dx
+in
+pop[ dx + 1 ]
+push [ dx + 1 ]
+pop [ dx + 2 ]
+push dx
+push 1
+add
+pop dx
+call func26:
+push [ 0 ]
+push dx
+push 1
+sub
+pop dx
+out
+jmp endlabel:
+func26:
+push [ dx + 1 ]
+push 2
+jbe label0:
+push [ dx + 1 ]
+push 1
+sub
+pop [ dx + 2 ]
+push dx
+push 1
+add
+pop dx
+call func26:
+push [ 0 ]
+push dx
+push 1
+sub
+pop dx
+push [ dx + 1 ]
+push 2
+sub
+pop [ dx + 2 ]
+push dx
+push 1
+add
+pop dx
+call func26:
+push [ 0 ]
+push dx
+push 1
+sub
+pop dx
+add
+pop [ 0 ]
+ret
+jmp label1:
+label0:
+push 1
+pop [ 0 ]
+ret
+label1:
+jmp endlabel:
+
+
+endlabel:
+end

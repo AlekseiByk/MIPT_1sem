@@ -1,0 +1,8 @@
+main()
+	get (x)
+	put (fib(x))
+fib(x)
+	if (x > 2)
+		ret fib(x - 1) + fib(x - 2)
+	else
+		ret 1
