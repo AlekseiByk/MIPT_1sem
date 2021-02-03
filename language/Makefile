@@ -1,6 +1,6 @@
-HEADERS = headers/ASSert.h headers/Text.h headers/functions.h headers/FuncTree.h
+HEADERS = headers/ASSert.h headers/Text.h headers/functions.h headers/FuncTree.h headers/constants.h
 
-all:lang remove
+all:lang clean
 
 lang: lang.o func.o
 	g++ $^ -o lang
@@ -11,9 +11,8 @@ func.o: $(HEADERS)
 lang.o: lang.cpp $(HEADERS)
 	g++ -c $< -o $@
 
-remove:
-	rm -rf lang.o
-	rm -rf func.o
+clean:
+	rm -rf *.o
 	
 
 toasm:
